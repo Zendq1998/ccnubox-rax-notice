@@ -1,4 +1,4 @@
-import request from "../box-ui/util/request";
+import request from "./request";
 
 const InfoService = {
     getInfoList(options) {
