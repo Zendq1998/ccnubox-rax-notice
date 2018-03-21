@@ -2,7 +2,7 @@ import {createElement, Component, render} from 'rax';
 import View from 'rax-view';
 import Text from 'rax-text';
 import ListView from 'rax-listview';
-import InfoService from './services';
+import InfoService from './services/index.js';
 import styles from './App.css';
 
 class App extends Component {
@@ -19,7 +19,9 @@ class App extends Component {
     alert(window.location.href)
     InfoService.getInfoList()
       .then((data) => {
-        this.setData({data})
+        this.setState({data})
+        alert(this.state.data[0].content)
+        
       })
   }
 
@@ -27,25 +29,29 @@ class App extends Component {
     return (
       <View>
         <Text>{item.title}</Text>
-        <Text>{item.data}</Text>
+        <Text>{item.date}</Text>
       </View>
     );
   }
   render() {
     return (
-      <View style={styles.app}>
-        {/* <View style={styles.appHeader}>
-          <Text style={styles.appBanner}>Welcome to Rax</Text>
-        </View>
-        <Text style={styles.appIntro}>
-          To get started, edit src/App.js and save to reload.
-        </Text> */}
+      <View style={mystyle.container}>
         <ListView
           renderRow={this.listItem}
           dataSource={this.state.data}
         />
       </View>
+      //this.state.data[0].content
     );
+  }
+}
+
+const mystyle = {
+  container: {
+    flex: 1,
+    backgroundColor: '#efeff4',
+    paddingTop: 40,
+    paddingBottom: 40,
   }
 }
 

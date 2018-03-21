@@ -1,4 +1,4 @@
-import request from "./request";
+import request from "../../box-ui/util/request";
 
 const InfoService = {
     getInfoList(options) {
@@ -8,4 +8,6 @@ const InfoService = {
         })
     }
 }
-export default InfoService;
+
+        
+export  default InfoService; 
